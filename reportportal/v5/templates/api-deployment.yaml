@@ -93,7 +93,15 @@ spec:
         {{ if .Values.minio.region }}          
         - name: RP_BINARYSTORE_MINIO_REGION
           value: "{{ .Values.minio.region }}"
-        {{ end }}     
+        {{ end }}
+        {{ if .Values.minio.bucketPrefix}}
+        - name: RP_BINARYSTORE_MINIO_BUCKETPREFIX
+          value: "{{ .Values.minio.bucketPrefix }}"
+        {{ end }}
+        {{ if .Values.minio.defaultBucketName}}
+        - name: RP_BINARYSTORE_MINIO_DEFAULTBUCKETNAME
+          value: "{{ .Values.minio.defaultBucketName }}"
+        {{ end }}
         {{ if .Values.minio.secretName }}
         - name: RP_BINARYSTORE_MINIO_ACCESSKEY
           valueFrom:
